@@ -50,17 +50,34 @@ public class SimpleCalculatorTest {
     }
 
     @Test
+    @DisplayName("Testing the division ..")
+    @RepeatedTest(value = 10, name = "Random numbers: test {currentRepetition} of {totalRepetitions}")
     void testDivide() {
+        
+        int randNumOne = rand.nextInt(Integer.MAX_VALUE) * (rand.nextBoolean() ? -1 : 1);
+        int randNumTwo = rand.nextInt(Integer.MAX_VALUE) * (rand.nextBoolean() ? -1 : 1);
 
+        SimpleCalculator.divide(randNumOne, randNumTwo);
     }
 
     @Test
+    @DisplayName("Testing the multiplication ...")
+    @RepeatedTest(value = 10, name = "Random numbers: test {currentRepetition} of {totalRepetitions}")
     void testMultiply() {
 
+        int randNumOne = rand.nextInt(Integer.MAX_VALUE) * (rand.nextBoolean() ? -1 : 1);
+        int randNumTwo = rand.nextInt(Integer.MAX_VALUE) * (rand.nextBoolean() ? -1 : 1);
+
+        SimpleCalculator.multiply(randNumOne, randNumTwo);
     }
 
     @Test
+    @DisplayName("Testing the subtraction ...")
+    @RepeatedTest(value = 10, name = "Random numbers: test {currentRepetition} of {totalRepetitions}")
     void testSubtraction() {
+        int randNumOne = rand.nextInt(Integer.MAX_VALUE) * (rand.nextBoolean() ? -1 : 1);
+        int randNumTwo = rand.nextInt(Integer.MAX_VALUE) * (rand.nextBoolean() ? -1 : 1);
 
+        SimpleCalculator.subtraction(randNumOne, randNumTwo);
     }
 }
