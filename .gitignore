@@ -1,3 +1,7 @@
+# Ignored folders
+.vscode
+.lib
+
 # Compiled class file
 *.class
 
