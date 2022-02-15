@@ -12,6 +12,33 @@ public class TicTacToeBoard extends Application {
 
     public static int turn = 0;
 
+    // Handle button clicks by inserting (alternating between) an "X" or
+    // an "O" if a symbol does not already exist in that square.
+    // The variable, turn, is incremented after each valid click on a square in order
+    // to alternate between the symbols
+    public void checkPrint(Button square) {
+        square.setOnAction(new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent event) {
+                if(square.getText() != "X" && square.getText() != "O")
+                {
+                    turn++;
+                    if(turn % 2 == 1) {
+                        Font f = Font.font("Bookman Old Style", FontWeight.EXTRA_BOLD, 36);
+                        square.setFont(f);
+                        square.setText("X");
+                        square.setStyle("-fx-text-fill: green");
+                    }
+                    else {
+                        Font f = Font.font("Bookman Old Style", FontWeight.EXTRA_BOLD, 36);
+                        square.setFont(f);
+                        square.setText("O");
+                        square.setStyle("-fx-text-fill: red");
+                    }
+                }
+            }
+        });
+    }
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setTitle("Tic Tac Toe Board");
@@ -55,190 +82,17 @@ public class TicTacToeBoard extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
 
-        // Handle button clicks by inserting (alternating between) an "X" or
-        // an "O" if a symbol does not already exist in that square.
-        // The variable, turn, is incremented after each valid click on a square in order
-        // to alternate between the symbols
-        square11.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent event) {
-                if(square11.getText() != "X" && square11.getText() != "O")
-                {
-                    turn++;
-                    if(turn % 2 == 1) {
-                        Font f = Font.font("Bookman Old Style", FontWeight.EXTRA_BOLD, 36);
-                        square11.setFont(f);
-                        square11.setText("X");
-                        square11.setStyle("-fx-text-fill: green");
-                    }
-                    else {
-                        Font f = Font.font("Bookman Old Style", FontWeight.EXTRA_BOLD, 36);
-                        square11.setFont(f);
-                        square11.setText("O");
-                        square11.setStyle("-fx-text-fill: red");
-                    }
-                }
-            }
-        });
-        square12.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent event) {
-                if(square12.getText() != "X" && square12.getText() != "O")
-                {
-                    turn++;
-                    if(turn % 2 == 1) {
-                        Font f = Font.font("Bookman Old Style", FontWeight.EXTRA_BOLD, 36);
-                        square12.setFont(f);
-                        square12.setText("X");
-                        square12.setStyle("-fx-text-fill: green");
-                    }
-                    else {
-                        Font f = Font.font("Bookman Old Style", FontWeight.EXTRA_BOLD, 36);
-                        square12.setFont(f);
-                        square12.setText("O");
-                        square12.setStyle("-fx-text-fill: red");
-                    }
-                }
-            }
-        });
-        square13.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent event) {
-                if(square13.getText() != "X" && square13.getText() != "O")
-                {
-                    turn++;
-                    if(turn % 2 == 1) {
-                        Font f = Font.font("Bookman Old Style", FontWeight.EXTRA_BOLD, 36);
-                        square13.setFont(f);
-                        square13.setText("X");
-                        square13.setStyle("-fx-text-fill: green");
-                    }
-                    else {
-                        Font f = Font.font("Bookman Old Style", FontWeight.EXTRA_BOLD, 36);
-                        square13.setFont(f);
-                        square13.setText("O");
-                        square13.setStyle("-fx-text-fill: red");
-                    }
-                }
-            }
-        });
-        square21.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent event) {
-                if(square21.getText() != "X" && square21.getText() != "O")
-                {
-                    turn++;
-                    if(turn % 2 == 1) {
-                        Font f = Font.font("Bookman Old Style", FontWeight.EXTRA_BOLD, 36);
-                        square21.setFont(f);
-                        square21.setText("X");
-                        square21.setStyle("-fx-text-fill: green");
-                    }
-                    else {
-                        Font f = Font.font("Bookman Old Style", FontWeight.EXTRA_BOLD, 36);
-                        square21.setFont(f);
-                        square21.setText("O");
-                        square21.setStyle("-fx-text-fill: red");
-                    }
-                }
-            }
-        });
-        square22.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent event) {
-                if(square22.getText() != "X" && square22.getText() != "O")
-                {
-                    turn++;
-                    if(turn % 2 == 1) {
-                        Font f = Font.font("Bookman Old Style", FontWeight.EXTRA_BOLD, 36);
-                        square22.setFont(f);
-                        square22.setText("X");
-                        square22.setStyle("-fx-text-fill: green");
-                    }
-                    else {
-                        Font f = Font.font("Bookman Old Style", FontWeight.EXTRA_BOLD, 36);
-                        square22.setFont(f);
-                        square22.setText("O");
-                        square22.setStyle("-fx-text-fill: red");
-                    }
-                }
-            }
-        });
-        square23.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent event) {
-                if(square23.getText() != "X" && square23.getText() != "O")
-                {
-                    turn++;
-                    if(turn % 2 == 1) {
-                        Font f = Font.font("Bookman Old Style", FontWeight.EXTRA_BOLD, 36);
-                        square23.setFont(f);
-                        square23.setText("X");
-                        square23.setStyle("-fx-text-fill: green");
-                    }
-                    else {
-                        Font f = Font.font("Bookman Old Style", FontWeight.EXTRA_BOLD, 36);
-                        square23.setFont(f);
-                        square23.setText("O");
-                        square23.setStyle("-fx-text-fill: red");
-                    }
-                }
-            }
-        });
-        square31.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent event) {
-                if(square31.getText() != "X" && square31.getText() != "O")
-                {
-                    turn++;
-                    if(turn % 2 == 1) {
-                        Font f = Font.font("Bookman Old Style", FontWeight.EXTRA_BOLD, 36);
-                        square31.setFont(f);
-                        square31.setText("X");
-                        square31.setStyle("-fx-text-fill: green");
-                    }
-                    else {
-                        Font f = Font.font("Bookman Old Style", FontWeight.EXTRA_BOLD, 36);
-                        square31.setFont(f);
-                        square31.setText("O");
-                        square31.setStyle("-fx-text-fill: red");
-                    }
-                }
-            }
-        });
-        square32.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent event) {
-                if(square32.getText() != "X" && square32.getText() != "O")
-                {
-                    turn++;
-                    if(turn % 2 == 1) {
-                        Font f = Font.font("Bookman Old Style", FontWeight.EXTRA_BOLD, 36);
-                        square32.setFont(f);
-                        square32.setText("X");
-                        square32.setStyle("-fx-text-fill: green");
-                    }
-                    else {
-                        Font f = Font.font("Bookman Old Style", FontWeight.EXTRA_BOLD, 36);
-                        square32.setFont(f);
-                        square32.setText("O");
-                        square32.setStyle("-fx-text-fill: red");
-                    }
-                }
-            }
-        });
-        square33.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent event) {
-                if(square33.getText() != "X" && square33.getText() != "O")
-                {
-                    turn++;
-                    if(turn % 2 == 1) {
-                        Font f = Font.font("Bookman Old Style", FontWeight.EXTRA_BOLD, 36);
-                        square33.setFont(f);
-                        square33.setText("X");
-                        square33.setStyle("-fx-text-fill: green");
-                    }
-                    else {
-                        Font f = Font.font("Bookman Old Style", FontWeight.EXTRA_BOLD, 36);
-                        square33.setFont(f);
-                        square33.setText("O");
-                        square33.setStyle("-fx-text-fill: red");
-                    }
-                }
-            }
-        });
+        // Print a symbol if an empty square is selected
+        checkPrint(square11);
+        checkPrint(square12);
+        checkPrint(square13);
+        checkPrint(square21);
+        checkPrint(square22);
+        checkPrint(square23);
+        checkPrint(square31);
+        checkPrint(square32);
+        checkPrint(square33);
+
     }
 
     public static void main(String[] args) {
