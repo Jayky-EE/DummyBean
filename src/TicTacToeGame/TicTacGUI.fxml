@@ -6,23 +6,23 @@
 <AnchorPane prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TicTacToeGame.TicTacGUIController">
     <children>
         <GridPane prefHeight="600" prefWidth="600">
-            <Button fx:id="square11" onAction="#checkPrint11" prefHeight="200" prefWidth="200" text=""
+            <Button fx:id="square11" onAction="#checkCurrentButton" prefHeight="200" prefWidth="200" text=""
                     GridPane.columnIndex="0" GridPane.rowIndex="0" />
-            <Button fx:id="square12" onAction="#checkPrint12" prefHeight="200" prefWidth="200" text=""
+            <Button fx:id="square12" onAction="#checkCurrentButton" prefHeight="200" prefWidth="200" text=""
                     GridPane.columnIndex="1" GridPane.rowIndex="0" />
-            <Button fx:id="square13" onAction="#checkPrint13" prefHeight="200" prefWidth="200" text=""
+            <Button fx:id="square13" onAction="#checkCurrentButton" prefHeight="200" prefWidth="200" text=""
                     GridPane.columnIndex="2" GridPane.rowIndex="0" />
-            <Button fx:id="square21" onAction="#checkPrint21" prefHeight="200" prefWidth="200" text=""
+            <Button fx:id="square21" onAction="#checkCurrentButton" prefHeight="200" prefWidth="200" text=""
                     GridPane.columnIndex="0" GridPane.rowIndex="1" />
-            <Button fx:id="square22" onAction="#checkPrint22" prefHeight="200" prefWidth="200" text=""
+            <Button fx:id="square22" onAction="#checkCurrentButton" prefHeight="200" prefWidth="200" text=""
                     GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Button fx:id="square23" onAction="#checkPrint23" prefHeight="200" prefWidth="200" text=""
+            <Button fx:id="square23" onAction="#checkCurrentButton" prefHeight="200" prefWidth="200" text=""
                     GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <Button fx:id="square31" onAction="#checkPrint31" prefHeight="200" prefWidth="200" text=""
+            <Button fx:id="square31" onAction="#checkCurrentButton" prefHeight="200" prefWidth="200" text=""
                     GridPane.columnIndex="0" GridPane.rowIndex="2" />
-            <Button fx:id="square32" onAction="#checkPrint32" prefHeight="200" prefWidth="200" text=""
+            <Button fx:id="square32" onAction="#checkCurrentButton" prefHeight="200" prefWidth="200" text=""
                     GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Button fx:id="square33" onAction="#checkPrint33" prefHeight="200" prefWidth="200" text=""
+            <Button fx:id="square33" onAction="#checkCurrentButton" prefHeight="200" prefWidth="200" text=""
                     GridPane.columnIndex="2" GridPane.rowIndex="2" />
         </GridPane>
     </children>
