@@ -1,17 +1,16 @@
 package TicTacToeGame;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
 public class TicTacGUIController {
 
-    public static int turn = 0;
-
     /**
      * Gets the current button and checks if there is an existing "X" or "O"
-     * If there is, place a corresponding X or O and increment turn.
+     * If there is, place a corresponding X or O and increment TicTacLogic.turn.
      * If not, do nothing
      * @param event An action event (must be a Button)
      * @throws Exception
@@ -24,8 +23,10 @@ public class TicTacGUIController {
 
         // Elihas code for determining X and O of button.
         if(pressedButton.getText() != "X" && pressedButton.getText() != "O") {
-            turn++;
-            if(turn % 2 == 1) {
+            
+            TicTacLogic.advanceTurn(pressedButton);
+
+            if(TicTacLogic.getCurrentPlayer() == 1) {
                 Font f = Font.font("Bookman Old Style", FontWeight.EXTRA_BOLD, 64);
                 pressedButton.setFont(f);
                 pressedButton.setText("X");
@@ -36,6 +37,16 @@ public class TicTacGUIController {
                 pressedButton.setFont(f);
                 pressedButton.setText("O");
                 pressedButton.setStyle("-fx-text-fill: red");
+            }
+
+            // When a player wins, disable buttons and highlight where game was won.
+            if(TicTacLogic.checkForWin(pressedButton)) {
+                System.out.println("PLAYER " + TicTacLogic.getCurrentPlayer() + " HAS WON!");
+
+                // Get the scene and disable the GridPane
+                Scene gameScene = pressedButton.getScene();
+                gameScene.lookup("GridPane").setDisable(true);
+                
             }
         }
     }
