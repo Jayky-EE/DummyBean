@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="startMenu" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TicTacToeGame.TicTacGUIController">
+    <VBox alignment="CENTER" layoutY="-42.0" prefHeight="600" prefWidth="600">
+        <children>
+            <Label text="Welcome to Tic Tac Toe" />
+            <Button fx:id="onePlayerMode" onAction="#SetOnePlayerMode" text="ONE PLAYER" />
+            <Button fx:id="twoPlayerMode" onAction="#SetTwoPlayerMode" text="TWO PLAYER" />
+            <Button fx:id="quitButton" onAction="#logout" text="QUIT" />
+        </children>
+    </VBox>
+</AnchorPane>

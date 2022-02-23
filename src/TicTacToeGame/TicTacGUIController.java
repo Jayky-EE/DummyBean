@@ -1,12 +1,86 @@
 package TicTacToeGame;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Toggle;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import javafx.stage.Stage;
+import javafx.event.ActionEvent;
+
+
+import javax.swing.*;
+import java.io.IOException;
 
 public class TicTacGUIController {
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
+
+    @FXML
+    public void SetGameMode(ActionEvent event) throws IOException{
+        root = FXMLLoader.load(getClass().getResource("SetPlayers.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+   public void SetOnePlayerMode (ActionEvent event) throws IOException{
+        root = FXMLLoader.load(getClass().getResource("TicTacGUI.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    public void SetTwoPlayerMode (ActionEvent event) throws IOException{
+        root = FXMLLoader.load(getClass().getResource("TicTacGUI.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    public void switchToBoard(ActionEvent event) throws IOException {
+         root = FXMLLoader.load(getClass().getResource("TicTacGUI.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    /// temp switches to board until credits are implemented
+    @FXML
+    public void switchToCredits(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("TicTacGUI.fxml"));
+        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+
+    // quit game
+    @FXML
+    private Button  quitButton;
+    @FXML
+    private AnchorPane startMenu;
+
+    public void logout(ActionEvent event){
+        stage = (Stage) startMenu.getScene().getWindow();
+        stage.close();
+
+    }
 
     /**
      * Gets the current button and checks if there is an existing "X" or "O"
