@@ -10,8 +10,8 @@
     <VBox alignment="CENTER" layoutY="-42.0" prefHeight="600" prefWidth="600">
         <children>
             <Label text="Welcome to Tic Tac Toe" />
-            <Button fx:id="onePlayerMode" onAction="#SetOnePlayerMode" text="ONE PLAYER" />
-            <Button fx:id="twoPlayerMode" onAction="#SetTwoPlayerMode" text="TWO PLAYER" />
+            <Button fx:id="onePlayerMode" onAction="#PlayerOneMode" text="ONE PLAYER" />
+            <Button fx:id="twoPlayerMode" onAction="#PlayerTwoMode" text="TWO PLAYER" />
             <Button fx:id="quitButton" onAction="#logout" text="QUIT" />
         </children>
     </VBox>

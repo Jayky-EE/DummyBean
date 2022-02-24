@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TicTacToeGame.TicTacGUIController">
+   <children>
+      <Button fx:id="submitButton" layoutX="343.0" layoutY="187.0" mnemonicParsing="false" onAction="#getPlayerOneName" text="ENTER" />
+      <TextField fx:id="PlayerOneNameInput" layoutX="183.0" layoutY="187.0"/>
+      <Label fx:id="EnterPlayOneNameLabel" layoutX="206.0" layoutY="140.0" text="ENTER PLAYER ONE NAME" />
+
+   </children>
+</AnchorPane>
