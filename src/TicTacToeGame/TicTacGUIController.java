@@ -19,7 +19,7 @@ public class TicTacGUIController {
     private Stage stage;
     private Scene scene;
     private Parent root;
-    public boolean PlayerOneMode;
+    public static boolean PlayerOneMode;
     @FXML
     public void SetGameMode(ActionEvent event) throws IOException{
         root = FXMLLoader.load(getClass().getResource("SetPlayers.fxml"));
@@ -54,13 +54,16 @@ public class TicTacGUIController {
     @FXML
     private Label EnterPlayOneNameLabel;
 
-    String NamePlayerOne;
-    String NamePlayerTwo;
+    public static String NamePlayerOne;
+    public static String NamePlayerTwo;
 
 
-    public void getPlayerOneName (ActionEvent event) throws IOException {
+    public void getNamePlayerOneMode (ActionEvent event) throws IOException {
         NamePlayerOne = PlayerOneNameInput.getText();
-        root = FXMLLoader.load(getClass().getResource("setPlayerTwo.fxml"));
+        if (PlayerOneMode == true)
+            root = FXMLLoader.load(getClass().getResource("TicTacGUI.fxml"));
+        else
+            root = FXMLLoader.load(getClass().getResource("setPlayerTwo.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -115,7 +118,6 @@ public class TicTacGUIController {
         stage = (Stage) startMenu.getScene().getWindow();
         stage.close();
     }
-
 
     /**
      * Restarts the game when the restart button is pressed.
