@@ -7,8 +7,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.control.Toggle;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Font;
@@ -26,52 +24,6 @@ public class TicTacGUIController {
     private Parent root;
 
     @FXML
-    private Label PlayerOneLabel;
-    @FXML
-    private TextField PlayerOneTextField;
-    public String namePlayerOne;
-
-    @FXML
-    private TextField PlayerTwoTextField;
-    @FXML
-    private Label PlayerTwoLabel;
-    public String namePlayerTwo;
-
-    @FXML
-    public  Button submitButton;
-
-    public boolean OnePlayer;
-
-    //String namePlayerTwo;
-    public void submit (ActionEvent event) throws IOException{
-        namePlayerOne= PlayerOneTextField.getText();
-        if (OnePlayer == true){
-            root = FXMLLoader.load(getClass().getResource("TicTacGUI.fxml"));
-        }
-        else {
-
-            root = FXMLLoader.load(getClass().getResource("SetName2.fxml"));
-        }
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-
-    }
-
-    public void submit2 (ActionEvent event) throws IOException{
-        namePlayerTwo= PlayerTwoTextField.getText();
-        root = FXMLLoader.load(getClass().getResource("TicTacGUI.fxml"));
-
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-
-    }
-
-
-    @FXML
     public void SetGameMode(ActionEvent event) throws IOException{
         root = FXMLLoader.load(getClass().getResource("SetPlayers.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -82,18 +34,16 @@ public class TicTacGUIController {
 
     @FXML
    public void SetOnePlayerMode (ActionEvent event) throws IOException{
-        OnePlayer = true;
-        root = FXMLLoader.load(getClass().getResource("SetName1.fxml"));
+        root = FXMLLoader.load(getClass().getResource("TicTacGUI.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-
     }
 
     @FXML
     public void SetTwoPlayerMode (ActionEvent event) throws IOException{
-        root = FXMLLoader.load(getClass().getResource("SetName1.fxml"));
+        root = FXMLLoader.load(getClass().getResource("TicTacGUI.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

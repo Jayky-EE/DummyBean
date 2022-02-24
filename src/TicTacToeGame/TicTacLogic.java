@@ -1,6 +1,10 @@
 package TicTacToeGame;
-
+import javafx.event.ActionEvent;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.GridPane;
 
 /**
  * Implementation for gameplay logic.
@@ -28,6 +32,38 @@ public class TicTacLogic {
         int col = (buttonID - 11) % 10;
 
         boardState[row][col] = getCurrentPlayer(); // Place player token into the board state.
+    }
+
+    /**
+     * Resets the game.
+     * @param event An Action Event
+     */
+    public static void resetGame(ActionEvent event) {
+
+        turn = 0;
+        boardState = new int[3][3];
+
+        Button resetBtn = (Button) event.getSource();
+        Scene gameScene = resetBtn.getScene();
+        GridPane sceneGridPane = (GridPane) gameScene.lookup("GridPane");
+        Label statusLabel = (Label) gameScene.lookup("#gameStatus");
+        statusLabel.setText(" ");
+
+        // Iterate through GridPane and set them all blank.
+        for(int m = 0; m < 3; m++) {
+            for(int n = 0; n < 3; n++) {
+                for(Node node : sceneGridPane.getChildren()) {
+                    
+                    if(GridPane.getRowIndex(node) == m && GridPane.getColumnIndex(node) == n) {
+                        Button btn = (Button)node;
+                        btn.setText(" ");
+                    }
+                }
+            }
+        }
+        
+        sceneGridPane.setDisable(false);
+        resetBtn.setDisable(true);
     }
 
 
@@ -81,16 +117,10 @@ public class TicTacLogic {
     }
 
     /**
-     * Prints the internal board state to console, useful for debugging.
+     * Gets the 2D array of the board state.
+     * @return The current board state.
      */
-    public static void printBoardState() {
-
-        for(int row = 0; row < 3; row ++) {
-            for(int col = 0; col < 3; col++) {
-
-                System.out.print(boardState[row][col] + "\t");
-            }
-            System.out.println();
-        }
+    public static int[][] currentBoardState() {
+        return boardState;
     }
 }
