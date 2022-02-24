@@ -45,7 +45,8 @@ public class TicTacGUIController {
         stage.show();
     }
 
-
+    public static String NamePlayerOne;
+    public static String NamePlayerTwo;
 
     @FXML
     public Button submitButton;
@@ -54,11 +55,8 @@ public class TicTacGUIController {
     @FXML
     private Label EnterPlayOneNameLabel;
 
-    public static String NamePlayerOne;
-    public static String NamePlayerTwo;
 
-
-    public void getNamePlayerOneMode (ActionEvent event) throws IOException {
+    public void getPlayerOneName (ActionEvent event) throws IOException {
         NamePlayerOne = PlayerOneNameInput.getText();
         if (PlayerOneMode == true)
             root = FXMLLoader.load(getClass().getResource("TicTacGUI.fxml"));

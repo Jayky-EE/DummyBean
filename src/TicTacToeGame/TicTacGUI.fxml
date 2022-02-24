@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="startMenu" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TicTacToeGame.TicTacGUIController">
+<AnchorPane prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TicTacToeGame.TicTacGUIController">
     <VBox>
         <children>
             <ToolBar>
@@ -46,7 +46,7 @@
             </GridPane>
         </children>
     </VBox>
-   <Label layoutX="6.0" layoutY="637.0" text="NamePlayerOne""/>
+   <Label layoutX="6.0" layoutY="637.0" text="NamePlayerOne"/>
    <Label layoutX="343.0" layoutY="637.0" text="Player Two:" />
    <Label layoutX="500.0" layoutY="637.0" text="Score:" />
 </AnchorPane>
