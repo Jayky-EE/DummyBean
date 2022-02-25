@@ -9,30 +9,31 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
 
-<AnchorPane prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TicTacToeGame.TicTacGUIController">
+<AnchorPane fx:id="startMenu" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TicTacToeGame.TicTacGUIController">
     <VBox>
         <children>
             <ToolBar>
                 <HBox alignment="CENTER">
-                    <Button fx:id="menuBtn" onAction="#goToMainMenu" prefHeight="25" prefWidth="100" text="Main Menu" />
-                    <Button fx:id="restartBtn" disable="true" onAction="#newGame" prefHeight="25" prefWidth="100" text="Restart" />
+                    <Button fx:id="menuBtn" onAction="#goToMainMenu" prefHeight="25" prefWidth="100" stylesheets="@style.css" text="Main Menu" />
+                    <Button fx:id="restartBtn" disable="true" onAction="#newGame" prefHeight="25" prefWidth="100" stylesheets="@style.css" text="Restart" />
                     <Label fx:id="gameStatus" />
                 </HBox>
-            <Button mnemonicParsing="false" onAction="#logout" text="Quit" />
+            <Button mnemonicParsing="false" onAction="#logout" stylesheets="@style.css" text="Quit" />
             <Label />
             <Label prefHeight="15.0" prefWidth="71.0" text="Game Score:" />
             </ToolBar>
             <GridPane>
-                <Button fx:id="square11" onAction="#checkCurrentButton" prefHeight="200" prefWidth="200" text="" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                <Button fx:id="square12" onAction="#checkCurrentButton" prefHeight="200" prefWidth="200" text="" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-                <Button fx:id="square13" onAction="#checkCurrentButton" prefHeight="200" prefWidth="200" text="" GridPane.columnIndex="2" GridPane.rowIndex="0" />
-                <Button fx:id="square21" onAction="#checkCurrentButton" prefHeight="200" prefWidth="200" text="" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-                <Button fx:id="square22" onAction="#checkCurrentButton" prefHeight="200" prefWidth="200" text="" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                <Button fx:id="square23" onAction="#checkCurrentButton" prefHeight="200" prefWidth="200" text="" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                <Button fx:id="square31" onAction="#checkCurrentButton" prefHeight="200" prefWidth="200" text="" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-                <Button fx:id="square32" onAction="#checkCurrentButton" prefHeight="200" prefWidth="200" text="" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                <Button fx:id="square33" onAction="#checkCurrentButton" prefHeight="200" prefWidth="200" text="" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                <Button fx:id="square11" defaultButton="true" onAction="#checkCurrentButton" prefHeight="200" prefWidth="200" style="-fx-background-color: transparent; -fx-border-width: 0; -fx-border-color: none;" styleClass="IDLE_BUTTON" stylesheets="@style.css" text="" />
+                <Button fx:id="square12" onAction="#checkCurrentButton" prefHeight="200" prefWidth="200" style="-fx-background-color: transparent; -fx-border-width: 0; -fx-border-color: none;" stylesheets="@style.css" text="" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                <Button fx:id="square13" onAction="#checkCurrentButton" prefHeight="200" prefWidth="200" style="-fx-background-color: transparent; -fx-border-width: 0; -fx-border-color: none;" stylesheets="@style.css" text="" GridPane.columnIndex="2" />
+                <Button fx:id="square21" onAction="#checkCurrentButton" prefHeight="200" prefWidth="200" style="-fx-background-color: transparent; -fx-border-width: 0; -fx-border-color: none;" stylesheets="@style.css" text="" GridPane.rowIndex="1" />
+                <Button fx:id="square22" onAction="#checkCurrentButton" prefHeight="200" prefWidth="200" style="-fx-background-color: transparent; -fx-border-width: 0; -fx-border-color: none;" stylesheets="@style.css" text="" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <Button fx:id="square23" onAction="#checkCurrentButton" prefHeight="200" prefWidth="200" style="-fx-background-color: transparent; -fx-border-width: 0; -fx-border-color: none;" stylesheets="@style.css" text="" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                <Button fx:id="square31" onAction="#checkCurrentButton" prefHeight="200" prefWidth="200" style="-fx-background-color: transparent; -fx-border-width: 0; -fx-border-color: none;" stylesheets="@style.css" text="" GridPane.rowIndex="2" />
+                <Button fx:id="square32" onAction="#checkCurrentButton" prefHeight="200" prefWidth="200" style="-fx-background-color: transparent; -fx-border-width: 0; -fx-border-color: none;" stylesheets="@style.css" text="" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                <Button fx:id="square33" onAction="#checkCurrentButton" prefHeight="200" prefWidth="200" style="-fx-background-color: transparent; -fx-border-width: 0; -fx-border-color: none;" stylesheets="@style.css" text="" GridPane.columnIndex="2" GridPane.rowIndex="2" />
             <columnConstraints>
                <ColumnConstraints />
                <ColumnConstraints />
@@ -46,7 +47,11 @@
             </GridPane>
         </children>
     </VBox>
-   <Label layoutX="6.0" layoutY="637.0" text="NamePlayerOne"/>
+   <Label layoutX="6.0" layoutY="637.0" text="NamePlayerOne" />
    <Label layoutX="343.0" layoutY="637.0" text="Player Two:" />
+   <Line endX="259.5" endY="559.0" layoutX="-62.0" layoutY="65.0" startX="259.5" startY="-28.0" strokeWidth="5.0" />
+   <Line endX="471.5" endY="544.0" layoutX="-52.0" layoutY="75.0" startX="471.5" startY="-36.5" strokeWidth="5.0" />
+   <Line endX="587.6715698242188" endY="227.7928924560547" startX="6.8786773681640625" startY="227.79290771484375" strokeMiterLimit="20.0" strokeWidth="5.0" />
+   <Line endX="576.5" endY="427.0" layoutX="10.0" layoutY="10.0" startX="-1.5" startY="427.0" strokeWidth="5.0" />
    <Label layoutX="500.0" layoutY="637.0" text="Score:" />
 </AnchorPane>

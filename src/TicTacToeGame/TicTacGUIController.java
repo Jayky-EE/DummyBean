@@ -3,6 +3,7 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -12,6 +13,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Toggle;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
@@ -20,6 +22,8 @@ import javafx.event.ActionEvent;
 
 import javax.swing.*;
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 public class TicTacGUIController {
     private Stage stage;
@@ -51,8 +55,8 @@ public class TicTacGUIController {
         stage.show();
     }
 
-    public static String NamePlayerOne;
-    public static String NamePlayerTwo;
+    public String NamePlayerOne;
+    public String NamePlayerTwo;
 
     @FXML
     public Button submitButton;
@@ -61,7 +65,7 @@ public class TicTacGUIController {
     @FXML
     private Label EnterPlayOneNameLabel;
 
-
+    @FXML
     public void getPlayerOneName (ActionEvent event) throws IOException {
         NamePlayerOne = PlayerOneNameInput.getText();
         if (PlayerOneMode == true)
@@ -76,11 +80,13 @@ public class TicTacGUIController {
 
     @FXML
     public Button submitButton1;
+
     @FXML
     private TextField PlayerTwoNameInput;
     @FXML
     private Label EnterPlayTwoNameLabel;
 
+    @FXML
     public void getPlayerTwoName (ActionEvent event) throws IOException{
         NamePlayerTwo = PlayerTwoNameInput.getText();
         root = FXMLLoader.load(getClass().getResource("TicTacGUI.fxml"));
@@ -122,6 +128,29 @@ public class TicTacGUIController {
         stage = (Stage) startMenu.getScene().getWindow();
         stage.close();
     }
+    /**
+     * Restarts the game when the restart button is pressed.
+     * @param event An action event
+     * @throws Exception
+     */
+    @FXML
+    private void newGame(ActionEvent event) throws Exception {
+        TicTacLogic.resetGame(event);
+    }
+
+    /**
+     * Goes to the main menu when the button is pressed.
+     * @param event
+     * @throws Exception
+     */
+    @FXML
+    private void goToMainMenu(ActionEvent event) throws Exception {
+        root = FXMLLoader.load(getClass().getResource("StartMenuGUI.fxml"));
+        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 
     /**
      * Gets the current button and checks if there is an existing "X" or "O"
@@ -138,7 +167,7 @@ public class TicTacGUIController {
 
         // Elihas code for determining X and O of button.
         if(pressedButton.getText() != "X" && pressedButton.getText() != "O") {
-            
+
             TicTacLogic.advanceTurn(pressedButton);
 
             if(TicTacLogic.getCurrentPlayer() == 1) {
@@ -156,12 +185,17 @@ public class TicTacGUIController {
 
             // When a player wins, disable buttons and highlight where game was won.
             if(TicTacLogic.checkForWin(pressedButton)) {
-                System.out.println("PLAYER " + TicTacLogic.getCurrentPlayer() + " HAS WON!");
 
-                // Get the scene and disable the GridPane
+                // Get the scene and disable the GridPane.
                 Scene gameScene = pressedButton.getScene();
-                gameScene.lookup("GridPane").setDisable(true);
-                
+                Button restartBtn = (Button) gameScene.lookup("#restartBtn");
+                GridPane sceneGridPane = (GridPane) gameScene.lookup("GridPane");
+                Label statusLabel = (Label) gameScene.lookup("#gameStatus");
+
+                statusLabel.setText("\tPlayer " + TicTacLogic.getCurrentPlayer() + " has won the game!");
+                sceneGridPane.setDisable(true);
+                restartBtn.setDisable(false);
+
             }
         }
     }
