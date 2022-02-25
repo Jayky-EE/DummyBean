@@ -4,14 +4,72 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="startMenu" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TicTacToeGame.TicTacGUIController">
-    <VBox alignment="CENTER" layoutY="-42.0" prefHeight="600" prefWidth="600">
-        <children>
-            <Label text="Welcome to Tic Tac Toe" />
-            <Button fx:id="onePlayerMode" onAction="#PlayerOneMode" stylesheets="@style.css" text="ONE PLAYER" />
-            <Button fx:id="twoPlayerMode" onAction="#PlayerTwoMode" stylesheets="@style.css" text="TWO PLAYER" />
-            <Button fx:id="quitButton" onAction="#logout" stylesheets="@style.css" text="QUIT" />
-        </children>
-    </VBox>
+
+<VBox alignment="CENTER" layoutY="-42.0" prefHeight="600" prefWidth="600" />
+    <Button fx:id="onePlayerMode" layoutX="28.0" layoutY="594.0" onAction="#PlayerOneMode" stylesheets="@style.css" text="ONE PLAYER">
+      <font>
+         <Font size="21.0" />
+      </font></Button>
+    <Button fx:id="twoPlayerMode" layoutX="235.0" layoutY="594.0" onAction="#PlayerTwoMode" stylesheets="@style.css" text="TWO PLAYER">
+      <font>
+         <Font size="21.0" />
+      </font></Button>
+    <Button fx:id="quitButton" layoutX="468.0" layoutY="594.0" onAction="#logout" stylesheets="@style.css" text="QUIT">
+      <font>
+         <Font size="21.0" />
+      </font></Button>
+<Label layoutX="6.0" layoutY="637.0" />
+<Line endX="259.5" endY="519.5" layoutX="-62.0" layoutY="65.0" startX="259.5" startY="-15.0" strokeWidth="5.0" />
+<Line endX="471.5" endY="506.5" layoutX="-52.0" layoutY="75.0" startX="471.5" startY="-15.0" strokeWidth="5.0" />
+<Line endX="587.6715698242188" endY="227.7928924560547" startX="6.8786773681640625" startY="227.79290771484375" strokeMiterLimit="20.0" strokeWidth="5.0" />
+<Line endX="576.5" endY="427.0" layoutX="10.0" layoutY="10.0" startX="-1.5" startY="427.0" strokeWidth="5.0" />
+<Label layoutX="68.0" layoutY="82.0" text="T">
+    <font>
+        <Font size="96.0" />
+    </font>
+</Label>
+<Label layoutX="289.0" layoutY="73.0" text="I">
+    <font>
+        <Font size="96.0" />
+    </font>
+</Label>
+<Label layoutX="472.0" layoutY="73.0" text="C">
+    <font>
+        <Font size="96.0" />
+    </font>
+</Label>
+<Label layoutX="74.0" layoutY="272.0" text="T">
+    <font>
+        <Font size="96.0" />
+    </font>
+</Label>
+<Label layoutX="269.0" layoutY="268.0" text="A">
+    <font>
+        <Font size="96.0" />
+    </font>
+</Label>
+<Label layoutX="477.0" layoutY="270.0" text="C">
+    <font>
+        <Font size="96.0" />
+    </font>
+</Label>
+<Label layoutX="74.0" layoutY="474.0" text="T">
+    <font>
+        <Font size="96.0" />
+    </font>
+</Label>
+<Label layoutX="272.0" layoutY="474.0" text="O" textFill="#d00909">
+    <font>
+        <Font size="96.0" />
+    </font>
+</Label>
+<Label layoutX="482.0" layoutY="467.0" text="E">
+    <font>
+        <Font size="96.0" />
+    </font>
+</Label>
 </AnchorPane>

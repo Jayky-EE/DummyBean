@@ -20,6 +20,7 @@ import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 
 
+import javax.sound.sampled.Line;
 import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
@@ -192,9 +193,14 @@ public class TicTacGUIController {
                 GridPane sceneGridPane = (GridPane) gameScene.lookup("GridPane");
                 Label statusLabel = (Label) gameScene.lookup("#gameStatus");
 
+                // strike through line after win for each possible condition - come back to this
+                // Line winLine = (Line) gameScene.lookup("#gameStatus");
+                //winLine.setDisable(false);
+
                 statusLabel.setText("\tPlayer " + TicTacLogic.getCurrentPlayer() + " has won the game!");
                 sceneGridPane.setDisable(true);
                 restartBtn.setDisable(false);
+                ///
 
             }
         }
