@@ -16,6 +16,7 @@ public class TicTacToe extends Application {
 
         Parent root = FXMLLoader.load(getClass().getResource("StartMenuGUI.fxml"));
         Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
     }
