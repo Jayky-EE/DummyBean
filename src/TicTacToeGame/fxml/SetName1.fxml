@@ -9,6 +9,6 @@
    <children>
       <TextField fx:id="PlayerOneTextField" alignment="CENTER" layoutX="220.0" layoutY="240.0" />
       <Label fx:id="PlayerOneLabel" alignment="CENTER" layoutX="220.0" layoutY="200.0" text="ENTER PLAYER ONE NAME:" />
-      <Button fx:id="submitButton" layoutX="380.0" layoutY="240.0" mnemonicParsing="false" onAction="#submit" stylesheets="@style.css" text="SUBMIT" />
+      <Button fx:id="submitButton" layoutX="380.0" layoutY="240.0" mnemonicParsing="false" onAction="#submit" stylesheets="@../stylesheets/style.css" text="SUBMIT" />
    </children>
 </AnchorPane>
