@@ -81,8 +81,6 @@ public class TicTacToeBoard {
         } else {
             playerTwo = new AIPlayer();
         }
-
-        System.out.println("THe turn is now for " + getCurrentPlayer().getPlayerName() + "(" + getCurrentPlayer().getPawnPiece() + ")");
     }
 
     /**

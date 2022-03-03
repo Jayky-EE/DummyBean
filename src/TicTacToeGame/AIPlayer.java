@@ -21,10 +21,15 @@ public class AIPlayer extends Player {
     }
 
     public AIPlayer(int difficulty) throws GameNotStartedException {
-        super("AI");
-        super.AI = true;
-        this.difficulty = difficulty;
+        super(thinkOfRandomName());
+        super.AI = true;    // Specify that this is now an EI player
 
+        // Set difficulty
+        if(difficulty >= 0 && difficulty <= 2) {
+            this.difficulty = difficulty;
+        } else {
+            difficulty = 1;
+        }
         think(); // One object is created, start thinking.
     }
 
@@ -47,7 +52,7 @@ public class AIPlayer extends Player {
             @Override
             public void run() {
                 
-                System.out.println("Brain starting!");
+                System.out.println(GameLogic.getAIPlayer().getPlayerName() + ": I am alive!");
 
                 while(!brain.isInterrupted()) {
                     try {
@@ -86,7 +91,7 @@ public class AIPlayer extends Player {
      * @throws GameNotStartedException Occurs when the started flag is FALSE.
      */
     private boolean performMyNextMove() throws GameNotStartedException {
-        System.out.println("Trying move...");
+        System.out.println(this.playerName + ": Trying move...");
         if(difficulty == 0) { 
 
                 // Thinks of a random square combination and finds the next valid square.
@@ -102,11 +107,19 @@ public class AIPlayer extends Player {
 
     /**
      * I think of a a random number in a specified range.
-     * @param min An integer
-     * @param max An integer
+     * @param min An integer inclusive
+     * @param max An integer exclusive
      * @return A number between min and max.
      */
-    private int thinkOfRandomNumber(int min, int max) {
+    private static int thinkOfRandomNumber(int min, int max) {
         return (int) (Math.random() * (max - min) + min);
+    }
+
+    /**
+     * I pick a random name from a list of names.
+     */
+    private static String thinkOfRandomName() {
+        String[] names = {"Matt", "Nika", "Elihas"};
+        return "AI " + names[thinkOfRandomNumber(0, names.length)];
     }
 }

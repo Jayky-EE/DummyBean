@@ -7,11 +7,11 @@ package TicTacToeGame;
  */
 public class Player {
     
-    private String playerName;          // String containing a player name
-    private char pawnPiece;             // A char representing pawn piece.
+    protected String playerName;          // String containing a player name
+    protected char pawnPiece;             // A char representing pawn piece.
+    protected boolean AI;               // States if the current player is an AI.
     private int playerID;               // The player ID depending on the global ID (playerID % 2 == 1 is player 1, otherwise player 2)
     private boolean active;             // States if the current player is an active player on the board.
-    protected boolean AI;               // States if the current player is an AI.
     private static int globalID = -1;    // The global ID which represents how many of these objects have been created.
 
     /**
