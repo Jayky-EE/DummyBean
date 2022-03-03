@@ -29,9 +29,19 @@ public class AIPlayer extends Player {
     }
 
     /**
+     * Determines if the AI is currently thinking.
+     * @return A boolean
+     */
+    public boolean isThinking() {
+        return thinking;
+    }
+
+    /**
      * 
      */
     private void think() {
+
+        // Create a new Thread that looks to see if it can play the current turn.
         brain = new Thread(new Runnable() {
 
             @Override
@@ -41,7 +51,7 @@ public class AIPlayer extends Player {
 
                 while(!brain.isInterrupted()) {
                     try {
-                        Thread.sleep(500);  // Speed control the thread as going too fast breaks the game.
+                        Thread.sleep(250);  // Speed control the thread as going too fast breaks the game.
                         if(GameLogic.getCurrentPlayer().isAI() && !GameLogic.gameHasEnded()) {
                             Platform.runLater(new Runnable() {
                                 @Override
@@ -57,7 +67,6 @@ public class AIPlayer extends Player {
                         }
                             
                     } catch (InterruptedException e) {
-                        System.out.println("Fun game! Let's play again!");
                         brain.interrupt();
                     }
                 }
@@ -65,8 +74,11 @@ public class AIPlayer extends Player {
             }
         });
 
-        if(!brain.isAlive())
+        // If the thread is not running, start the thread as a Dameon thread
+        if(!brain.isAlive()) {
+            brain.setDaemon(true);  // Tells JVM that this thread is in the background and should be killed once application closes.
             brain.start();
+        }
     }
     /**
      * I will determine the next optimal move based on the difficulty that I was created with.
@@ -94,15 +106,7 @@ public class AIPlayer extends Player {
      * @param max An integer
      * @return A number between min and max.
      */
-    public int thinkOfRandomNumber(int min, int max) {
+    private int thinkOfRandomNumber(int min, int max) {
         return (int) (Math.random() * (max - min) + min);
-    }
-
-    /**
-     * Determines if the AI is currently thinking.
-     * @return A boolean
-     */
-    public boolean isThinking() {
-        return thinking;
     }
 }

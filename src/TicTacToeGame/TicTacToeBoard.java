@@ -366,4 +366,12 @@ public class TicTacToeBoard {
         return ended;
     }
 
+    /**
+     * Determine if the game has stopped running.
+     * @return A boolean
+     */
+    public boolean gameIsRunning() {
+        return running;
+    }
+
 }
