@@ -1,6 +1,7 @@
 package TicTacToeGame;
 
 import TicTacToeGame.exceptions.GameNotStartedException;
+import javafx.application.Platform;
 import javafx.scene.control.Button;
 
 /**
@@ -11,7 +12,7 @@ import javafx.scene.control.Button;
 public class AIPlayer extends Player {
 
     private int difficulty = 0;     // 0 = easy, 1 = medium, 2 = hard.
-    private boolean isPerforming = false;
+    private boolean thinking = false;
     private TicTacToeBoard GameLogic = TicTacToeBoard.getInstance();
     private Thread brain;
 
@@ -24,42 +25,61 @@ public class AIPlayer extends Player {
         super.AI = true;
         this.difficulty = difficulty;
 
-        startThinking();
+        think(); // One object is created, start thinking.
     }
 
-    private void startThinking() {
+    /**
+     * 
+     */
+    private void think() {
         brain = new Thread(new Runnable() {
 
             @Override
             public void run() {
                 
                 System.out.println("Brain starting!");
-                while(true) {
 
-                    System.out.println("The current player, " + GameLogic.getCurrentPlayer().getPlayerName() + ", an AI? " + GameLogic.getCurrentPlayer().isAI());
+                while(!brain.isInterrupted()) {
+                    try {
+                        Thread.sleep(500);  // Speed control the thread as going too fast breaks the game.
+                        if(GameLogic.getCurrentPlayer().isAI() && !GameLogic.gameHasEnded()) {
+                            Platform.runLater(new Runnable() {
+                                @Override
+                                public void run() {
+                                    try {
+                                        performMyNextMove();
+                                    } catch (GameNotStartedException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+
+                            });
+                        }
+                            
+                    } catch (InterruptedException e) {
+                        System.out.println("Fun game! Let's play again!");
+                        brain.interrupt();
+                    }
                 }
                 
             }
         });
 
-        brain.start();
+        if(!brain.isAlive())
+            brain.start();
     }
     /**
      * I will determine the next optimal move based on the difficulty that I was created with.
      * @return True if my move advanced the turn. Returns false otherwise.
      * @throws GameNotStartedException Occurs when the started flag is FALSE.
      */
-    public boolean performMyNextMove() throws GameNotStartedException {
-
+    private boolean performMyNextMove() throws GameNotStartedException {
+        System.out.println("Trying move...");
         if(difficulty == 0) { 
 
                 // Thinks of a random square combination and finds the next valid square.
                 String randomSquareName = "#square" + thinkOfRandomNumber(1, 4) + thinkOfRandomNumber(1, 4);
                 Button selectedButton = (Button) GameLogic.getGameScene().lookup(randomSquareName);
-
-                System.out.println("I am trying " + randomSquareName);
-
-                //If AI finds the next valid move, set isPerforming to off so other player can do something.
 
                 return GameLogic.advanceTurn(selectedButton);
         }
@@ -79,10 +99,10 @@ public class AIPlayer extends Player {
     }
 
     /**
-     * Determines if the AI is performing an action.
+     * Determines if the AI is currently thinking.
      * @return A boolean
      */
-    public boolean isPerforming() {
-        return isPerforming;
+    public boolean isThinking() {
+        return thinking;
     }
 }

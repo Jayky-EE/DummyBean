@@ -14,8 +14,9 @@ import javafx.scene.text.*;
 public class TicTacToeBoard {
     
     private static TicTacToeBoard INSTANCE = null;
-    private boolean started;
-    private boolean localMultiplayer = true;
+    private boolean running;
+    private boolean ended;
+    private boolean localMultiplayer = false;       // Set to FALSE to enable AI.
 
     public int turn = 0;
     private int[][] boardState;
@@ -46,7 +47,8 @@ public class TicTacToeBoard {
     public void startGame(Scene scene, String pOneName, String pTwoName) throws GameNotStartedException {
 
         System.out.println("The game is starting!");
-        started = true;                     // Starts the game
+        running = true;                     // Starts the game
+        ended = false;
         boardState = new int[3][3];         // Initalize a new empty board.
 
         // Set the GUI buttons to be globally accessible.
@@ -80,7 +82,7 @@ public class TicTacToeBoard {
             playerTwo = new AIPlayer();
         }
 
-        
+        System.out.println("THe turn is now for " + getCurrentPlayer().getPlayerName() + "(" + getCurrentPlayer().getPawnPiece() + ")");
     }
 
     /**
@@ -99,26 +101,30 @@ public class TicTacToeBoard {
      */
     public boolean advanceTurn(Button pressedButton) throws GameNotStartedException {
 
-        if(!started)
+        if(!running)
             throw new GameNotStartedException("The game is not running.");
 
         // Get button from ActionEvent and see if player can place an X or an O.
         if(pressedButton.getText().length() != 1) {
             
-            // Advance turn and place appropriate X or O.
-            turn++;
-            System.out.println("The player " + getCurrentPlayer().getPlayerName() + " (is AI? " + getCurrentPlayer().isAI() + ") advanced the turn to " + turn + " by pressing a valid button.");
+            // If the next player is an AI, disable grid to prevent clicking.
+            if(getNextPlayer().isAI()) {
+                guiBoardState.setDisable(true);
+            } else {
+                guiBoardState.setDisable(false);
+            }
+
 
             if(getCurrentPlayer().getPlayerID() == 1) {
                 Font f = Font.font("Bookman Old Style", FontWeight.EXTRA_BOLD, 64);
                 pressedButton.setFont(f);
-                pressedButton.setText(getCurrentPlayer().getPawnPiece());
+                pressedButton.setText("X");
                 pressedButton.setStyle("-fx-text-fill: green");
             }
             else {
                 Font f = Font.font("Bookman Old Style", FontWeight.EXTRA_BOLD, 64);
                 pressedButton.setFont(f);
-                pressedButton.setText(getCurrentPlayer().getPawnPiece());
+                pressedButton.setText("O");
                 pressedButton.setStyle("-fx-text-fill: red");
             }
 
@@ -138,6 +144,7 @@ public class TicTacToeBoard {
                 resetButton.setDisable(false);
                 ///
 
+                ended = true;
                 return false;
 
             // Check to see if maximum turns have been reached.
@@ -148,10 +155,12 @@ public class TicTacToeBoard {
                 guiBoardState.setDisable(true);
                 resetButton.setDisable(false);
 
+                ended = true;
                 return false;
             }
 
             // Return true as the turn as been advanced with no declared winner yet.
+            turn++;
             return true;
         }
         
@@ -166,9 +175,9 @@ public class TicTacToeBoard {
      * @return 1 if current player won, 0 if maximum turns have been reached, and -1 otherwise.
      * @throws GameNotStartedException Occurs when the started flag is FALSE.
      */
-    public int checkForWin(Button currentButton) throws GameNotStartedException {
+    private int checkForWin(Button currentButton) throws GameNotStartedException {
         
-        if(!started)
+        if(!running)
             throw new GameNotStartedException("The game is not running.");
             
         //Check for a vertical win (if X1, X2, X3 are the same)
@@ -199,7 +208,7 @@ public class TicTacToeBoard {
                 return 1;
 
         // Return 0 if the turn advances to 9 as there can only be at most 9 valid moves.
-        if(turn >= 9)
+        if(turn >= 8)
             return 0;
         
         // Return -1 otherwise.
@@ -212,11 +221,12 @@ public class TicTacToeBoard {
      */
     public void resetGame() throws GameNotStartedException {
 
-        if(!started)
+        if(!running)
             throw new GameNotStartedException("The game is not running.");
 
         turn = 0;
         boardState = new int[3][3];
+        ended = false;
 
         // Iterate through GridPane and set them all blank.
         for(int m = 0; m < 3; m++) {
@@ -242,7 +252,8 @@ public class TicTacToeBoard {
         System.out.println("The game is ending!");
         resetGame(); // Reset the game board to a fresh, clean slate.
 
-        started = false;
+        running = false;
+        ended = true;
         // Set player fields to null to ensure garbage collection.
         playerOne = null;
         playerTwo = null;
@@ -308,6 +319,10 @@ public class TicTacToeBoard {
         return (turn % 2 == 0) ? playerOne : playerTwo;
     }
 
+    public Player getNextPlayer() {
+        return (turn % 2 == 0) ? playerTwo : playerOne;
+    }
+
     /**
      * Returns the AI player within the game.
      * @return An AIPlayer object.
@@ -341,6 +356,14 @@ public class TicTacToeBoard {
      */
     public Scene getGameScene() {
         return gameScene;
+    }
+
+    /**
+     * Determines if the game has ended.
+     * @return A boolean
+     */
+    public boolean gameHasEnded() {
+        return ended;
     }
 
 }
