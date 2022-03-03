@@ -15,7 +15,7 @@ public class TicTacToeBoard {
     
     private static TicTacToeBoard INSTANCE = null;
     private boolean started;
-    private boolean localMultiplayer = false;
+    private boolean localMultiplayer = true;
 
     public int turn = 0;
     private int[][] boardState;
@@ -224,7 +224,7 @@ public class TicTacToeBoard {
                 for(Node node : guiBoardState.getChildren()) {
                     
                     Button btn = (Button)node;
-                    btn.setText(" ");
+                    btn.setText("");
                 }
             }
         }
