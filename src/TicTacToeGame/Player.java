@@ -9,6 +9,7 @@ public class Player {
     
     protected String playerName;          // String containing a player name
     protected char pawnPiece;             // A char representing pawn piece.
+    protected char oppPawnPiece;        // A char representing opponent's pawn piece
     protected boolean AI;               // States if the current player is an AI.
     private int playerID;               // The player ID depending on the global ID (playerID % 2 == 1 is player 1, otherwise player 2)
     private boolean active;             // States if the current player is an active player on the board.
@@ -55,8 +56,10 @@ public class Player {
         if(pawn == '0') {
             if(playerID == 1) {
                 pawnPiece = 'X';
+                oppPawnPiece = 'O';
             } else {
                 pawnPiece = 'O';
+                oppPawnPiece = 'X';
             }
         } else {
             pawnPiece = pawn;
@@ -87,6 +90,14 @@ public class Player {
      */
     public String getPawnPiece() {
         return Character.toString(pawnPiece);
+    }
+
+    /**
+     * Gets the opponent's pawn piece as a String.
+     * @return Opponent's pawn piece represented as string.
+     */
+    public String getOppPawnPiece() {
+        return Character.toString(oppPawnPiece);
     }
 
     /**

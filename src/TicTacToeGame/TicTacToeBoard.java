@@ -173,7 +173,7 @@ public class TicTacToeBoard {
      * @return 1 if current player won, 0 if maximum turns have been reached, and -1 otherwise.
      * @throws GameNotStartedException Occurs when the started flag is FALSE.
      */
-    private int checkForWin(Button currentButton) throws GameNotStartedException {
+    public int checkForWin(Button currentButton) throws GameNotStartedException {
         
         if(!running)
             throw new GameNotStartedException("The game is not running.");
@@ -370,6 +370,14 @@ public class TicTacToeBoard {
      */
     public boolean gameIsRunning() {
         return running;
+    }
+
+    /**
+     * Gets instance of boardState
+     * @return A 2D array representing the state of the TTT board
+     */
+    public int[][] getBoardState() {
+        return boardState;
     }
 
 }
