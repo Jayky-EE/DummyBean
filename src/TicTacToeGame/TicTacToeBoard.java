@@ -16,7 +16,7 @@ public class TicTacToeBoard {
     private static TicTacToeBoard INSTANCE = null;
     private boolean running;
     private boolean ended;
-    private boolean localMultiplayer = false;       // Set to FALSE to enable AI.
+    public boolean localMultiplayer;       // Set to FALSE to enable AI.
 
     public int turn = 0;
     private int[][] boardState;
@@ -27,6 +27,9 @@ public class TicTacToeBoard {
     private GridPane guiBoardState;
     private Button resetButton;
     private Label statusLabel;
+    private Label PlayerNamePlate1;
+    private Label PlayerNamePlate2;
+
 
     /**
      * Creates an empty Tic Tac Toe board.
@@ -44,8 +47,11 @@ public class TicTacToeBoard {
      * @throws GameNotStartedException
      * @throws MaximumPlayersException Occurs when maximum players have been reached (no more than 2).
      */
-    public void startGame(Scene scene, String pOneName, String pTwoName) throws GameNotStartedException {
-
+    public void startGame(Scene scene, String pOneName, String pTwoName, boolean mode) throws GameNotStartedException {
+        if (mode)
+            localMultiplayer = false; // if player one mode active, activate AI
+        else
+            localMultiplayer = true; // player two mode
         System.out.println("The game is starting!");
         running = true;                     // Starts the game
         ended = false;
@@ -53,12 +59,13 @@ public class TicTacToeBoard {
 
         // Set the GUI buttons to be globally accessible.
         gameScene = scene;
-        guiBoardState = (GridPane)gameScene.lookup("#GameBoard");
-        resetButton = (Button)gameScene.lookup("#restartBtn");
-        statusLabel = (Label)gameScene.lookup("#gameStatus");
+        guiBoardState = (GridPane) gameScene.lookup("#GameBoard");
+        resetButton = (Button) gameScene.lookup("#restartBtn");
+        statusLabel = (Label) gameScene.lookup("#gameStatus");
 
-        if(pOneName != null) {
-            if(pOneName.length() >= 1) {
+        // setting custom player names to the board
+        if (pOneName != null) {
+            if (pOneName.length() >= 1) {
                 playerOne = new Player(pOneName);
             } else {
                 playerOne = new Player();
@@ -68,19 +75,24 @@ public class TicTacToeBoard {
         }
 
         // If the game is localMultiplayer, set P2 to a regular Player. If not, set P2 to an AIPlayer.
-        if(localMultiplayer) {
-            if(pTwoName != null) {
-                if(pTwoName.length() >= 1) {
+        PlayerNamePlate1 = (Label)gameScene.lookup("#PlayerDisplay1");
+        PlayerNamePlate2 = (Label)gameScene.lookup("#PlayerDisplay2");
+        if (localMultiplayer) { // if two player mode
+            if (pTwoName != null) {
+                if (pTwoName.length() >= 1) {
                     playerTwo = new Player(pTwoName);
-                } else {
+                } else
                     playerTwo = new Player();
-                }
             } else {
                 playerTwo = new Player();
             }
-        } else {
+        } else{ // one player mode
             playerTwo = new AIPlayer();
-        }
+    }
+
+        // Display names onto board
+        PlayerNamePlate1.setText("PLAYER ONE: " + String.valueOf(playerOne.getPlayerName()));
+        PlayerNamePlate2.setText("PLAYER TWO: " + String.valueOf(playerTwo.getPlayerName()));
     }
 
     /**
@@ -137,6 +149,8 @@ public class TicTacToeBoard {
                 //winLine.setDisable(false);
 
                 // Disable the GridPane and declare winner.
+                Font winnerFont = Font.font("Bookman Old Style", FontWeight.EXTRA_BOLD, 22);
+                statusLabel.setFont(winnerFont);
                 statusLabel.setText("\tPlayer " + getCurrentPlayer().getPlayerName() + " has won the game!");
                 guiBoardState.setDisable(true);
                 resetButton.setDisable(false);
@@ -149,6 +163,8 @@ public class TicTacToeBoard {
             } else if (checkForWin(pressedButton) == 0) {
 
                 // Disable the GridPane.
+                Font winnerFont = Font.font("Bookman Old Style", FontWeight.EXTRA_BOLD, 22);
+                statusLabel.setFont(winnerFont);
                 statusLabel.setText("\tIt's a draw!");
                 guiBoardState.setDisable(true);
                 resetButton.setDisable(false);
