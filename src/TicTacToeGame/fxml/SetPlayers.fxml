@@ -10,15 +10,15 @@
 <AnchorPane fx:id="startMenu" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TicTacToeGame.TicTacGUIController">
 
 <VBox alignment="CENTER" layoutY="-42.0" prefHeight="600" prefWidth="600" />
-    <Button fx:id="onePlayerMode" layoutX="28.0" layoutY="594.0" onAction="#PlayerOneMode" stylesheets="@style.css" text="ONE PLAYER">
+    <Button fx:id="onePlayerMode" layoutX="28.0" layoutY="594.0" onAction="#PlayerOneMode" stylesheets="@../stylesheets/style.css" text="ONE PLAYER">
       <font>
          <Font size="21.0" />
       </font></Button>
-    <Button fx:id="twoPlayerMode" layoutX="235.0" layoutY="594.0" onAction="#PlayerTwoMode" stylesheets="@style.css" text="TWO PLAYER">
+    <Button fx:id="twoPlayerMode" layoutX="235.0" layoutY="594.0" onAction="#PlayerTwoMode" stylesheets="@../stylesheets/style.css" text="TWO PLAYER">
       <font>
          <Font size="21.0" />
       </font></Button>
-    <Button fx:id="quitButton" layoutX="468.0" layoutY="594.0" onAction="#logout" stylesheets="@style.css" text="QUIT">
+    <Button fx:id="quitButton" layoutX="468.0" layoutY="594.0" onAction="#logout" stylesheets="@../stylesheets/style.css" text="QUIT">
       <font>
          <Font size="21.0" />
       </font></Button>
