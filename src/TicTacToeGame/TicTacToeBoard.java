@@ -116,12 +116,15 @@ public class TicTacToeBoard {
 
         // Get button from ActionEvent and see if player can place an X or an O.
         if(pressedButton.getText().length() != 1) {
+            statusLabel.setText("");
             
             // If the next player is an AI, disable grid to prevent clicking.
             if(getNextPlayer().isAI()) {
                 guiBoardState.setDisable(true);
+                statusLabel.setText("");
             } else {
                 guiBoardState.setDisable(false);
+                statusLabel.setText("");
             }
 
 
@@ -149,7 +152,7 @@ public class TicTacToeBoard {
                 //winLine.setDisable(false);
 
                 // Disable the GridPane and declare winner.
-                Font winnerFont = Font.font("Bookman Old Style", FontWeight.EXTRA_BOLD, 22);
+                Font winnerFont = Font.font("American Typewriter", FontWeight.EXTRA_BOLD, 22);
                 statusLabel.setFont(winnerFont);
                 statusLabel.setText("\tPlayer " + getCurrentPlayer().getPlayerName() + " has won the game!");
                 guiBoardState.setDisable(true);
@@ -163,7 +166,7 @@ public class TicTacToeBoard {
             } else if (checkForWin(pressedButton) == 0) {
 
                 // Disable the GridPane.
-                Font winnerFont = Font.font("Bookman Old Style", FontWeight.EXTRA_BOLD, 22);
+                Font winnerFont = Font.font("American Typewriter", FontWeight.EXTRA_BOLD, 22);
                 statusLabel.setFont(winnerFont);
                 statusLabel.setText("\tIt's a draw!");
                 guiBoardState.setDisable(true);
