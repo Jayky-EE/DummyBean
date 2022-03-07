@@ -27,6 +27,10 @@ public class run extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("fxml/StartMenuGUI.fxml"));
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("stylesheets/style.css").toExternalForm());
+
+
+
+        stage.setTitle("Tic Tac Toe");
         stage.setScene(scene);
         stage.show();
     }

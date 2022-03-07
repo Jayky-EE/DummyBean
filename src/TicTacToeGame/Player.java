@@ -37,7 +37,6 @@ public class Player {
      * @param pawn
      */
     Player(String name, char pawn) {
-
         active = true;
         globalID++;
 
