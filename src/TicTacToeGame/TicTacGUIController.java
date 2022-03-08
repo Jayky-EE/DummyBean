@@ -145,6 +145,7 @@ public class TicTacGUIController {
      * @param event
      * @throws Exception
      */
+
     @FXML
     private void goToMainMenu(ActionEvent event) throws Exception {
         TicTacToeBoard GameLogic = TicTacToeBoard.getInstance();

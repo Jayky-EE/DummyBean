@@ -60,7 +60,7 @@ public class TicTacToeBoard {
         // Set the GUI buttons to be globally accessible.
         gameScene = scene;
         guiBoardState = (GridPane) gameScene.lookup("#GameBoard");
-        resetButton = (Button) gameScene.lookup("#restartBtn");
+        resetButton = (Button) gameScene.lookup("#restartBtn2");
         statusLabel = (Label) gameScene.lookup("#gameStatus");
 
         // setting custom player names to the board

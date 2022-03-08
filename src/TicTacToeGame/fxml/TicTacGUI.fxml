@@ -20,7 +20,7 @@
          <Font name="American Typewriter" size="20.0" />
       </font>
    </Button>
-   <Button fx:id="restartBtn2" disable="false" layoutX="241.0" layoutY="608.0" onAction="#newGame" prefHeight="25" prefWidth="100" stylesheets="@../stylesheets/style.css" text="Restart">
+   <Button fx:id="restartBtn2" disable="true" layoutX="241.0" layoutY="608.0" onAction="#newGame" prefHeight="25" prefWidth="100" stylesheets="@../stylesheets/style.css" text="Restart">
       <font>
          <Font name="American Typewriter" size="20.0" />
       </font>
