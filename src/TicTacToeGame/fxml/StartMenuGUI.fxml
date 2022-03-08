@@ -7,13 +7,13 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="startMenu"  prefHeight="654.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TicTacToeGame.TicTacGUIController">
+<AnchorPane fx:id="startMenu" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="654.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TicTacToeGame.TicTacGUIController">
     <Label layoutX="100.0" layoutY="79.0" text="T">
         <font>
             <Font name="American Typewriter" size="96.0" />
         </font>
     </Label>
-    <VBox alignment="CENTER" layoutX="-1.0" layoutY="13.0" prefHeight="654" prefWidth="600" />
+    <VBox alignment="CENTER" layoutX="-1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="654.0" prefWidth="600" />
     <Label layoutX="6.0" layoutY="637.0" />
     <Line endX="259.5" endY="506.0" layoutX="-54.0" layoutY="33.0" startX="259.5" startY="53.0" strokeWidth="5.0" />
     <Line endX="471.5" endY="500.0" layoutX="-73.0" layoutY="39.0" startX="471.5" startY="42.0" strokeWidth="5.0" />
@@ -60,21 +60,21 @@
         </font>
     </Label>
 
-        <Button fx:id="localGame" layoutX="53.0" layoutY="561.0" onAction="#SetGameMode" stylesheets="@../stylesheets/style.css" text="PLAY LOCAL">
+              <Button fx:id="localGame" layoutX="28.0" layoutY="557.0" onAction="#SetGameMode" stylesheets="@../stylesheets/style.css" text="PLAY LOCAL">
       <font>
-         <Font name="American Typewriter" size="21.0" />
+         <Font name="American Typewriter" size="25.0" />
       </font>
    </Button>
-      <Button fx:id="creditButton" layoutX="245.0" layoutY="561.0" onAction="#switchToCredits" prefHeight="32.0" prefWidth="125.0" stylesheets="@../stylesheets/style.css" text="CREDITS">
+      <Button fx:id="creditButton" layoutX="233.0" layoutY="557.0" onAction="#switchToCredits" prefHeight="48.0" prefWidth="150.0" stylesheets="@../stylesheets/style.css" text="CREDITS">
       <font>
-         <Font name="American Typewriter" size="21.0" />
+         <Font name="American Typewriter" size="25.0" />
       </font></Button>
-      <Button fx:id="quitButton" layoutX="443.0" layoutY="561.0" onAction="#logout" stylesheets="@../stylesheets/style.css" text="QUIT">
+      <Button fx:id="quitButton" layoutX="425.0" layoutY="557.0" onAction="#logout" stylesheets="@../stylesheets/style.css" text="QUIT">
       <font>
-         <Font name="American Typewriter" size="21.0" />
+         <Font name="American Typewriter" size="25.0" />
       </font>
    </Button>
-   <Label layoutX="130.0" layoutY="14.0" text="WELCOME TO">
+   <Label layoutX="130.0" layoutY="14.0" text="WELCOME TO" textFill="#457fd1">
       <font>
          <Font name="American Typewriter" size="53.0" />
       </font>

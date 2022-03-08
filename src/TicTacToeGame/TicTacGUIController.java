@@ -147,8 +147,8 @@ public class TicTacGUIController {
      */
     @FXML
     private void goToMainMenu(ActionEvent event) throws Exception {
-        //TicTacToeBoard GameLogic = TicTacToeBoard.getInstance();
-        //GameLogic.endGame();   // Ends the game.
+        TicTacToeBoard GameLogic = TicTacToeBoard.getInstance();
+        GameLogic.endGame();   // Ends the game.
 
         root = FXMLLoader.load(getClass().getResource("fxml/StartMenuGUI.fxml"));
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
